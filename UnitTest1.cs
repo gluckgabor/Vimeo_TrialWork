@@ -13,6 +13,7 @@ using WebDriverManager.DriverConfigs.Impl;
 using Xunit;
 using Xunit.Abstractions;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Selenium.NetCore.Test
 {
@@ -68,7 +69,7 @@ namespace Selenium.NetCore.Test
         [Fact]
         public void OLM_0_SetToBlocked()
         {
-            webDriver.Navigate().GoToUrl("https://olm.testcaselab.com/projects/OLM/test_run/68256?sort_dir=asc&sort_attr=created_at&test_case_id=1191221");
+            webDriver.Navigate().GoToUrl("https://olm.testcaselab.com/projects/OLM/test_run/71096?sort_dir=asc&sort_attr=created_at&test_case_id=1191221");
             webDriver.Manage().Window.Maximize();
 
             Thread.Sleep(1000);
@@ -77,209 +78,111 @@ namespace Selenium.NetCore.Test
             webDriver.FindElement(By.Name("user[password]")).SendKeys("welcometoten10REM#");
             webDriver.FindElement(By.XPath("/html/body/div[1]/div[3]/div/div/form/div[4]/input")).Click();
 
-            Thread.Sleep(1000);
-
-            // The minified JavaScript to execute
-            const string script =
-                "var timeId=setInterval(function(){window.scrollY<document.body.scrollHeight-window.screen.availHeight?window.scrollTo(0,document.body.scrollHeight):(clearInterval(timeId),window.scrollTo(0,0))},5000);";
-
-            // Start Scrolling
-            var jse = (IJavaScriptExecutor)webDriver;
-            jse.ExecuteScript(script);
+            Thread.Sleep(3000);
 
             WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(100));
-
-            //3
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-3')]")));
-
-            Actions action = new Actions(webDriver);
-            action.MoveToElement(webDriver.FindElement(By.XPath("//*[contains(text(), 'OLM-3')]"))).MoveByOffset(73, 8).Click().Perform();
-
-            Thread.Sleep(1000);
-
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
-            webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")).Click();
-
-            //6
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-6')]")));
-
-            action.MoveToElement(webDriver.FindElement(By.XPath("//*[contains(text(), 'OLM-6')]"))).MoveByOffset(73, 8).Click().Perform();
-
-            Thread.Sleep(1000);
-
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
-            webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")).Click();
-
-
-            //24
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-24')]")));
-
-            action.MoveToElement(webDriver.FindElement(By.XPath("//*[contains(text(), 'OLM-24')]"))).MoveByOffset(73, 8).Click().Perform();
-
-            Thread.Sleep(1000);
-
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
-            webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")).Click();
-
-
-            //29
-            //wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-29')]")));
-
-            //action.MoveToElement(webDriver.FindElement(By.XPath("//*[contains(text(), 'OLM-29')]"))).MoveByOffset(73, 8).Click().Perform();
-
-            //Thread.Sleep(1000);
-
-            //wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
-            //webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")).Click();
-
-            //31
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-31')]")));
-
-            action.MoveToElement(webDriver.FindElement(By.XPath("//*[contains(text(), 'OLM-31')]"))).MoveByOffset(73, 8).Click().Perform();
-
-            Thread.Sleep(1000);
-
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
-            webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")).Click();
-
-            //57
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-57')]")));
-
-            action.MoveToElement(webDriver.FindElement(By.XPath("//*[contains(text(), 'OLM-57')]"))).MoveByOffset(73, 8).Click().Perform();
-
-            Thread.Sleep(1000);
-
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
-            webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")).Click();
-
-            //83
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-83')]")));
-
-            action.MoveToElement(webDriver.FindElement(By.XPath("//*[contains(text(), 'OLM-83')]"))).MoveByOffset(73, 8).Click().Perform();
-
-            Thread.Sleep(1000);
-
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
-            webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")).Click();
-
-
-            //84
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-84')]")));
-
-            action.MoveToElement(webDriver.FindElement(By.XPath("//*[contains(text(), 'OLM-84')]"))).MoveByOffset(73, 8).Click().Perform();
-
-            Thread.Sleep(1000);
-
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
-            webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")).Click();
+            var jse = (IJavaScriptExecutor)webDriver;
 
 
             //Scroll to bottom of leftmost div
-            IWebElement divWithScrollbarElement = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]"));
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]")));
 
-            IWebElement elementToScrollTo = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[42]/div[2]/div/span/test-case-label"));
+            IWebElement elementToScrollTo = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[37]/div[2]/div/span/div"));
 
-            jse.ExecuteScript("arguments[0].scrollTo(0, arguments[0].scrollHeight)", divWithScrollbarElement);
+            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo);
+            Thread.Sleep(3000);
 
+            IWebElement elementToScrollTo2 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[49]/div[2]/div/span/div"));
+            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo2);
+            Thread.Sleep(4000);
 
+            IWebElement elementToScrollTo21 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[51]/div[2]/div/span/div"));
+            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo21);
+            Thread.Sleep(4000);
 
-            //114
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-114')]")));
+            IWebElement elementToScrollTo22 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[53]/div[2]/div/span/div"));
+            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo22);
+            Thread.Sleep(4000);
 
-            action.MoveToElement(webDriver.FindElement(By.XPath("//*[contains(text(), 'OLM-114')]"))).MoveByOffset(73, 8).Click().Perform();
+            IWebElement elementToScrollTo3 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[55]/div[2]/div/span/div"));
+            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo3);
+            Thread.Sleep(3000);
 
-            Thread.Sleep(1000);
+            IWebElement elementToScrollTo4 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[85]/div[2]/div/span/div"));
+            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo4);
+            Thread.Sleep(3000);
 
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
-            webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")).Click();
+            IWebElement elementToScrollTo5 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[95]/div[2]/div/span/div"));
+            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo5);
+            Thread.Sleep(3000);
 
+            IWebElement elementToScrollTo6 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[100]/div[2]/div/span/div"));
+            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo6);
+            Thread.Sleep(3000);
 
-            //115
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-115')]")));
+            IWebElement elementToScrollTo7 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[115]/div[2]/div/span/div"));
+            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo7);
+            Thread.Sleep(3000);
 
-            action.MoveToElement(webDriver.FindElement(By.XPath("//*[contains(text(), 'OLM-115')]"))).MoveByOffset(73, 8).Click().Perform();
+            IWebElement elementToScrollTo8 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[137]/div[2]/div/span/div"));
+            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo8);
+            Thread.Sleep(3000);
 
-            Thread.Sleep(1000);
-
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
-            webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")).Click();
-
-
-            //116
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-116')]")));
-
-            action.MoveToElement(webDriver.FindElement(By.XPath("//*[contains(text(), 'OLM-116')]"))).MoveByOffset(73, 8).Click().Perform();
-
-            Thread.Sleep(1000);
-
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
-            webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")).Click();
-
-
-            //117
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-117')]")));
-
-            action.MoveToElement(webDriver.FindElement(By.XPath("//*[contains(text(), 'OLM-117')]"))).MoveByOffset(73, 8).Click().Perform();
-
-            Thread.Sleep(1000);
-
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
-            webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")).Click();
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-3')]")));
+            Thread.Sleep(3000);
+            Actions action = new Actions(webDriver);
 
 
-            //118
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-118')]")));
+            IList<IWebElement> AllTestsIds = webDriver.FindElements(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[@*]/div[2]/div/span/test-case-label/span/a"));
+            int[] TestIDsToBeSetToBlocked = {3, 6, 24, 31, 39, 57, 83, 84, 114, 115, 116, 123, 147, 498};
 
-            action.MoveToElement(webDriver.FindElement(By.XPath("//*[contains(text(), 'OLM-118')]"))).MoveByOffset(73, 8).Click().Perform();
+            void BlockedSetter(int[] TestIDsToBeSetToBlocked, IList<IWebElement> AllTestsIds)
+            {
+                int index = 0;
+                while (index < TestIDsToBeSetToBlocked.Length)
+                {
+                    String currentTestIDtoBeSetToBlocked = String.Concat("OLM-", Convert.ToString(TestIDsToBeSetToBlocked[index]));
 
-            Thread.Sleep(1000);
+                    foreach (var item in AllTestsIds)
+                    {
+                        String itemText = item.Text;
+                        if (itemText == currentTestIDtoBeSetToBlocked)
+                        {
+                            IWebElement elementToScrollTo9 = webDriver.FindElement(By.LinkText(itemText));
+                            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo9);
 
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
-            webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")).Click();
-
-
-            //123 Teljesítményértékelő: Tesztelői szempontból Blocked, mivel nem látjuk a teljesítményértékelést a tesztkörnyezeten.
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-123')]")));
-
-            action.MoveToElement(webDriver.FindElement(By.XPath("//*[contains(text(), 'OLM-123')]"))).MoveByOffset(73, 8).Click().Perform();
-
-            Thread.Sleep(1000);
-
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
-            webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")).Click();
-
-
-            //133
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-133')]")));
-
-            action.MoveToElement(webDriver.FindElement(By.XPath("//*[contains(text(), 'OLM-133')]"))).MoveByOffset(73, 8).Click().Perform();
-
-            Thread.Sleep(1000);
-
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
-            webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")).Click();
-
-            //147
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-147')]")));
-
-            action.MoveToElement(webDriver.FindElement(By.XPath("//*[contains(text(), 'OLM-147')]"))).MoveByOffset(73, 8).Click().Perform();
-
-            Thread.Sleep(1000);
-
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
-            webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")).Click();
+                            IWebElement toBeClicked = webDriver.FindElement(By.LinkText(itemText));
+                            new Actions(webDriver)
+                                .MoveToElement(toBeClicked, 180, 10)
+                                .Click()
+                                .Perform();
 
 
-            //498
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-498')]")));
+                            Thread.Sleep(1000);
 
-            action.MoveToElement(webDriver.FindElement(By.XPath("//*[contains(text(), 'OLM-498')]"))).MoveByOffset(73, 8).Click().Perform();
+                            currentTestIDtoBeSetToBlocked = "";
 
-            Thread.Sleep(1000);
+                            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
 
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
-            webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")).Click();
+                            String expectedtext = String.Concat("OLM-", TestIDsToBeSetToBlocked[index]);
+                            String actualTextInSecondPaneAbove = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[3]/div/test-case-run/div[3]/div[1]/div/h2/test-case-label/span/a")).Text;
 
+                            if (expectedtext == actualTextInSecondPaneAbove)
+                            {
+                                webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")).Click(); //set to blocked
+
+                                //webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[4]")).Click(); //set to not tested
+                            }
+
+                            Thread.Sleep(1000);
+                            index++;
+                            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo9);
+                        } 
+                    }    
+                }
+            }
+
+            BlockedSetter(TestIDsToBeSetToBlocked, AllTestsIds);
 
             Thread.Sleep(1000);
 
@@ -290,7 +193,7 @@ namespace Selenium.NetCore.Test
         }
 
         [Theory]
-        [InlineData("gluckgabor@gmail.com", "Asdf1234")]
+        [InlineData("gluckgabor@gmail.com", "WnrsZBPXMhFw4z6s")]
         public void OLM_2_Bejelentkezes_Hun(String login_email, String login_password)
         {
 
@@ -431,7 +334,7 @@ namespace Selenium.NetCore.Test
 
         
         [Theory]
-        [InlineData("gluckgabor@gmail.com", "Asdf1234")]
+        [InlineData("gluckgabor@gmail.com", "WnrsZBPXMhFw4z6s")]
         public void OLM_5_IE_kompatibilitas(String login_email, String login_password)
         {
             new DriverManager().SetUpDriver(new InternetExplorerConfig());
