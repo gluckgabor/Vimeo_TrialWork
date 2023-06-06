@@ -14,6 +14,7 @@ using Xunit;
 using Xunit.Abstractions;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Selenium.NetCore.Test
 {
@@ -67,7 +68,7 @@ namespace Selenium.NetCore.Test
 
         
         [Fact]
-        public void OLM_0_SetToBlocked()
+        public void OLM_0_1_SetToBlocked()
         {
             webDriver.Navigate().GoToUrl("https://olm.testcaselab.com/projects/OLM/test_run/71096?sort_dir=asc&sort_attr=created_at&test_case_id=1191221");
             webDriver.Manage().Window.Maximize();
@@ -75,7 +76,7 @@ namespace Selenium.NetCore.Test
             Thread.Sleep(1000);
 
             webDriver.FindElement(By.XPath("/html/body/div[1]/div[3]/div/div/form/div[1]/div/input")).SendKeys("gluckgabor@gmail.com");
-            webDriver.FindElement(By.Name("user[password]")).SendKeys("welcometoten10REM#");
+            webDriver.FindElement(By.Name("user[password]")).SendKeys("Bumblebee12");
             webDriver.FindElement(By.XPath("/html/body/div[1]/div[3]/div/div/form/div[4]/input")).Click();
 
             Thread.Sleep(3000);
@@ -136,7 +137,7 @@ namespace Selenium.NetCore.Test
             IList<IWebElement> AllTestsIds = webDriver.FindElements(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[@*]/div[2]/div/span/test-case-label/span/a"));
             int[] TestIDsToBeSetToBlocked = {3, 6, 24, 31, 39, 57, 83, 84, 114, 115, 116, 123, 147, 498};
 
-            void BlockedSetter(int[] TestIDsToBeSetToBlocked, IList<IWebElement> AllTestsIds)
+            void blockedSetter(int[] TestIDsToBeSetToBlocked, IList<IWebElement> AllTestsIds)
             {
                 int index = 0;
                 while (index < TestIDsToBeSetToBlocked.Length)
@@ -182,7 +183,7 @@ namespace Selenium.NetCore.Test
                 }
             }
 
-            BlockedSetter(TestIDsToBeSetToBlocked, AllTestsIds);
+            blockedSetter(TestIDsToBeSetToBlocked, AllTestsIds);
 
             Thread.Sleep(1000);
 
@@ -191,6 +192,218 @@ namespace Selenium.NetCore.Test
 
             Assert.Equal(expected, actual);
         }
+
+
+        internal static int[] putNumbersFrom1to10inRandomOrder() {
+
+            // Create an array with numbers from 1 to 10
+            int[] numbers = new int[11];
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                numbers[i] = i + 1;
+            }
+
+            // Shuffle the array using Fisher-Yates shuffle algorithm
+            Random random = new Random();
+            for (int i = numbers.Length - 1; i > 0; i--)
+            {
+                int j = random.Next(i + 1);
+                int temp = numbers[i];
+                numbers[i] = numbers[j];
+                numbers[j] = temp;
+            }
+
+            return numbers;
+        }
+
+        internal static void pairTestersToTestcaseIDs(List<TestcaseIDline> TestcaseIDlines)
+        {
+            int[] numbers = putNumbersFrom1to10inRandomOrder();
+
+            foreach (var TestcaseIDline in TestcaseIDlines) //végigmegyünk az összes teszteseten 
+            {
+                for (int i = 0; i < numbers.Length; i++) //végigmegyünk a 11 kategórián
+                    {
+                    for (int j = 0; j < testers.Length; j++) //végigmegyünk a 4 tesztelőn
+                        {                    
+                        if (TestcaseIDline.groupNo == numbers[i])
+                        {
+                                TestcaseIDline.testerToBeAssignedOnFE = testers[i];
+                        }                
+                    }
+                }
+
+            }
+        }
+
+        internal static void assigmentOnFE(List<TestcaseIDline> TestcaseIDlines)
+        {
+            webDriver.Navigate().GoToUrl("https://olm.testcaselab.com/projects/OLM/test_run/71096?sort_dir=asc&sort_attr=created_at&test_case_id=1191221");
+            webDriver.Manage().Window.Maximize();
+
+            Thread.Sleep(1000);
+
+            webDriver.FindElement(By.XPath("/html/body/div[1]/div[3]/div/div/form/div[1]/div/input")).SendKeys("gluckgabor@gmail.com");
+            webDriver.FindElement(By.Name("user[password]")).SendKeys("Bumblebee12");
+            webDriver.FindElement(By.XPath("/html/body/div[1]/div[3]/div/div/form/div[4]/input")).Click();
+
+            Thread.Sleep(3000);
+
+            WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(100));
+            var jse = (IJavaScriptExecutor)webDriver;
+
+
+            //Scroll to bottom of leftmost div
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]")));
+
+            IWebElement elementToScrollTo = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[37]/div[2]/div/span/div"));
+
+            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo);
+            Thread.Sleep(3000);
+
+            IWebElement elementToScrollTo2 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[49]/div[2]/div/span/div"));
+            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo2);
+            Thread.Sleep(4000);
+
+            IWebElement elementToScrollTo21 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[51]/div[2]/div/span/div"));
+            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo21);
+            Thread.Sleep(4000);
+
+            IWebElement elementToScrollTo22 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[53]/div[2]/div/span/div"));
+            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo22);
+            Thread.Sleep(4000);
+
+            IWebElement elementToScrollTo3 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[55]/div[2]/div/span/div"));
+            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo3);
+            Thread.Sleep(3000);
+
+            IWebElement elementToScrollTo4 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[85]/div[2]/div/span/div"));
+            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo4);
+            Thread.Sleep(3000);
+
+            IWebElement elementToScrollTo5 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[95]/div[2]/div/span/div"));
+            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo5);
+            Thread.Sleep(3000);
+
+            IWebElement elementToScrollTo6 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[100]/div[2]/div/span/div"));
+            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo6);
+            Thread.Sleep(3000);
+
+            IWebElement elementToScrollTo7 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[115]/div[2]/div/span/div"));
+            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo7);
+            Thread.Sleep(3000);
+
+            IWebElement elementToScrollTo8 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[137]/div[2]/div/span/div"));
+            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo8);
+            Thread.Sleep(3000);
+
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-3')]")));
+            Thread.Sleep(3000);
+            Actions action = new Actions(webDriver);
+
+
+            IList<IWebElement> AllTestsIds = webDriver.FindElements(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[@*]/div[2]/div/span/test-case-label/span/a"));
+
+            void assignAlready(List<TestcaseIDline> TestcaseIDlines, IList<IWebElement> AllTestsIds)
+            {
+                int index = 0;
+                while (index < TestcaseIDlines.Count)
+                {
+                    String currentTestIDtoBeAssigned = String.Concat("OLM-", Convert.ToString(TestcaseIDlines[index].testcaseID));
+
+                    foreach (var item in AllTestsIds)
+                    {
+                        String itemText = item.Text;
+                        if (itemText == currentTestIDtoBeAssigned)
+                        {
+                            IWebElement elementToScrollTo10 = webDriver.FindElement(By.LinkText(itemText));
+                            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo10);
+
+                            IWebElement toBeClicked = webDriver.FindElement(By.LinkText(itemText));
+                            new Actions(webDriver)
+                                .MoveToElement(toBeClicked, 180, 10)
+                                .Click()
+                                .Perform();
+
+
+                            Thread.Sleep(1000);
+
+                            currentTestIDtoBeAssigned = "";
+
+                            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
+
+                            String expectedtext = String.Concat("OLM-", TestcaseIDlines[index].testcaseID);
+                            String actualTextInSecondPaneAbove = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[3]/div/test-case-run/div[3]/div[1]/div/h2/test-case-label/span/a")).Text;
+
+                            if (expectedtext == actualTextInSecondPaneAbove)
+                            {
+                                Actions actions = new Actions(webDriver);
+
+                                // Perform a double-click action on the element
+                                actions.DoubleClick(webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[3]/div/test-case-run/div[3]/div[2]/dl[1]/test-case-run-details/div/div[2]/div[4]/test-case-test-run-assignee-field/div/span"))).Perform();
+
+                                String val = TestcaseIDlines[index].testerToBeAssignedOnFE;
+                                
+                                //for (int i = 0; i < val.Length; i++)
+                                //{
+                                    // c = val[i];
+                                    //String s = new StringBuilder().Append(c).ToString();
+                                    webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[3]/div/test-case-run/div[3]/div[2]/dl[1]/test-case-run-details/div/div[2]/div[4]/test-case-test-run-assignee-field/form/div/select")).SendKeys(val); //assign finally
+                                //}
+                            }
+
+                            Thread.Sleep(1000);
+                            index++;
+                            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo10);
+                        }
+                    }
+                }
+            }
+
+            //foreach (var TestcaseIDline in TestcaseIDlines)
+            //{
+                /* TestcaseIDline.testcaseID; TestcaseIDline.groupNo; */
+                assignAlready(TestcaseIDlines, AllTestsIds);
+            //}
+        }
+
+        static String[] testers = {
+                                    "Kovács Kata",
+                                    "Kovács Kata",
+                                    "Kovács Kata",
+                                    "Kovács Kata",
+                                    "Kovács Kata", 
+                                    "Kovács Kata", //6
+                                    "Gáspár Dóra",
+                                    "Gáspár Dóra", 
+                                    "Gáspár Dóra", 
+                                    "Gáspár Dóra", //4
+                                    "Sólyom András" //1
+        }; //hány darab tizenegyedet vigyen el pl. egy ember: 5-3-2-1
+
+
+
+
+
+        //static int[] workload = { 5, 3, 2, 1 }; 
+        [Fact]
+        public void OLM_0_2_AssignTestCases()
+        {
+            string[] testCaseLinesWithGroupNoReadFromFile = File.ReadAllLines("C:/Users/gluck/OneDrive/Documents/1 Structured Random Kft/elszámolás/2 OLM/11edes felosztás jun 6 2023.csv");
+
+            List<TestcaseIDline> testCaseIDlist = new List<TestcaseIDline>();
+
+            for (int i = 1; i < testCaseLinesWithGroupNoReadFromFile.Length; i++)
+            {
+                testCaseIDlist.Add(new TestcaseIDline(testCaseLinesWithGroupNoReadFromFile[i]));
+            }
+
+            pairTestersToTestcaseIDs(testCaseIDlist); //randomolni párosítást megfelelő mennyiséget tesztelőnként
+            assigmentOnFE(testCaseIDlist); //beállítani a felületen a megfelelőtesztesetet a megfelelő tesztelőhöz
+        }
+        
+        
+    
 
         [Theory]
         [InlineData("gluckgabor@gmail.com", "WnrsZBPXMhFw4z6s")]
@@ -378,5 +591,4 @@ namespace Selenium.NetCore.Test
         }
 
     }
-
 }
