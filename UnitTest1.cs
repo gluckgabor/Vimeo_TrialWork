@@ -31,12 +31,12 @@ namespace Selenium.NetCore.Test
             this.output = output;
             var directory = Directory.GetCurrentDirectory();
             //var pathDrivers = directory + "";
-            var pathDrivers = "C:/Users/gluck/OneDrive/Documents/1 Structured Random Kft/elszámolás/2 OLM/selenium-cshap-sample-master/drivers";
+            var pathDrivers = "C:/Users/gluck/.nuget/packages/selenium.webdriver.chromedriver/113.0.5672.6300/driver/win32";
             //"C:/Users/gluck/OneDrive/Documents/1 Structured Random Kft/elszámolás/2 OLM/selenium-cshap-sample-master/drivers
             webDriver = new ChromeDriver(pathDrivers);
 
-            //new DriverManager().SetUpDriver(new ChromeConfig());
-            //webDriver = new ChromeDriver();
+            new DriverManager().SetUpDriver(new ChromeConfig());
+            webDriver = new ChromeDriver();
 
             Debug.Print("dirGG" + directory);
 
@@ -67,131 +67,135 @@ namespace Selenium.NetCore.Test
         }
 
         
-        [Fact]
-        public void OLM_0_1_SetToBlocked()
-        {
-            webDriver.Navigate().GoToUrl("https://olm.testcaselab.com/projects/OLM/test_run/71096?sort_dir=asc&sort_attr=created_at&test_case_id=1191221");
-            webDriver.Manage().Window.Maximize();
+        //[Fact]
+        //public void OLM_0_1_SetToBlocked()
+        //{
+        //    webDriver.Navigate().GoToUrl("https://olm.testcaselab.com/projects/OLM/test_run/72302?sort_dir=desc&sort_attr=created_at&test_case_id=1456881");
+        //    webDriver.Manage().Window.Maximize();
 
-            Thread.Sleep(1000);
+        //    Thread.Sleep(1000);
 
-            webDriver.FindElement(By.XPath("/html/body/div[1]/div[3]/div/div/form/div[1]/div/input")).SendKeys("gluckgabor@gmail.com");
-            webDriver.FindElement(By.Name("user[password]")).SendKeys("Bumblebee12");
-            webDriver.FindElement(By.XPath("/html/body/div[1]/div[3]/div/div/form/div[4]/input")).Click();
+        //    webDriver.FindElement(By.XPath("/html/body/div[1]/div[3]/div/div/form/div[1]/div/input")).SendKeys("gluckgabor@gmail.com");
+        //    webDriver.FindElement(By.Name("user[password]")).SendKeys("Bumblebee12");
+        //    webDriver.FindElement(By.XPath("/html/body/div[1]/div[3]/div/div/form/div[4]/input")).Click();
 
-            Thread.Sleep(3000);
+        //    Thread.Sleep(3000);
 
-            WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(100));
-            var jse = (IJavaScriptExecutor)webDriver;
-
-
-            //Scroll to bottom of leftmost div
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]")));
-
-            IWebElement elementToScrollTo = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[37]/div[2]/div/span/div"));
-
-            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo);
-            Thread.Sleep(3000);
-
-            IWebElement elementToScrollTo2 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[49]/div[2]/div/span/div"));
-            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo2);
-            Thread.Sleep(4000);
-
-            IWebElement elementToScrollTo21 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[51]/div[2]/div/span/div"));
-            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo21);
-            Thread.Sleep(4000);
-
-            IWebElement elementToScrollTo22 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[53]/div[2]/div/span/div"));
-            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo22);
-            Thread.Sleep(4000);
-
-            IWebElement elementToScrollTo3 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[55]/div[2]/div/span/div"));
-            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo3);
-            Thread.Sleep(3000);
-
-            IWebElement elementToScrollTo4 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[85]/div[2]/div/span/div"));
-            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo4);
-            Thread.Sleep(3000);
-
-            IWebElement elementToScrollTo5 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[95]/div[2]/div/span/div"));
-            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo5);
-            Thread.Sleep(3000);
-
-            IWebElement elementToScrollTo6 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[100]/div[2]/div/span/div"));
-            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo6);
-            Thread.Sleep(3000);
-
-            IWebElement elementToScrollTo7 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[115]/div[2]/div/span/div"));
-            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo7);
-            Thread.Sleep(3000);
-
-            IWebElement elementToScrollTo8 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[137]/div[2]/div/span/div"));
-            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo8);
-            Thread.Sleep(3000);
-
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-3')]")));
-            Thread.Sleep(3000);
-            Actions action = new Actions(webDriver);
+        //    WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(100));
+        //    var jse = (IJavaScriptExecutor)webDriver;
 
 
-            IList<IWebElement> AllTestsIds = webDriver.FindElements(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[@*]/div[2]/div/span/test-case-label/span/a"));
-            int[] TestIDsToBeSetToBlocked = {3, 6, 24, 31, 39, 57, 83, 84, 114, 115, 116, 123, 147, 498};
+        //    //Scroll to bottom of leftmost div
+        //    wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]")));
 
-            void blockedSetter(int[] TestIDsToBeSetToBlocked, IList<IWebElement> AllTestsIds)
-            {
-                int index = 0;
-                while (index < TestIDsToBeSetToBlocked.Length)
-                {
-                    String currentTestIDtoBeSetToBlocked = String.Concat("OLM-", Convert.ToString(TestIDsToBeSetToBlocked[index]));
+        //    IWebElement elementToScrollTo = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[37]/div[2]/div/span/div"));
 
-                    foreach (var item in AllTestsIds)
-                    {
-                        String itemText = item.Text;
-                        if (itemText == currentTestIDtoBeSetToBlocked)
-                        {
-                            IWebElement elementToScrollTo9 = webDriver.FindElement(By.LinkText(itemText));
-                            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo9);
+        //    jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo);
+        //    Thread.Sleep(3000);
 
-                            IWebElement toBeClicked = webDriver.FindElement(By.LinkText(itemText));
-                            new Actions(webDriver)
-                                .MoveToElement(toBeClicked, 180, 10)
-                                .Click()
-                                .Perform();
+        //    IWebElement elementToScrollTo2 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[49]/div[2]/div/span/div"));
+        //    jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo2);
+        //    Thread.Sleep(4000);
+
+        //    IWebElement elementToScrollTo21 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[51]/div[2]/div/span/div"));
+        //    jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo21);
+        //    Thread.Sleep(4000);
+
+        //    IWebElement elementToScrollTo22 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[53]/div[2]/div/span/div"));
+        //    jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo22);
+        //    Thread.Sleep(4000);
+
+        //    IWebElement elementToScrollTo3 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[55]/div[2]/div/span/div"));
+        //    jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo3);
+        //    Thread.Sleep(3000);
+
+        //    IWebElement elementToScrollTo4 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[85]/div[2]/div/span/div"));
+        //    jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo4);
+        //    Thread.Sleep(3000);
+
+        //    IWebElement elementToScrollTo5 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[95]/div[2]/div/span/div"));
+        //    jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo5);
+        //    Thread.Sleep(3000);
+
+        //    IWebElement elementToScrollTo6 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[100]/div[2]/div/span/div"));
+        //    jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo6);
+        //    Thread.Sleep(3000);
+
+        //    IWebElement elementToScrollTo7 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[115]/div[2]/div/span/div"));
+        //    jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo7);
+        //    Thread.Sleep(3000);
+
+        //    IWebElement elementToScrollTo71 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[123]/div[2]/div/span/div"));
+        //    jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo71);
+        //    Thread.Sleep(3000);
+
+        //    //IWebElement elementToScrollTo8 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[130]/div[2]/div/span/div"));
+        //    //jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo8);
+        //    //Thread.Sleep(3000);
+
+        //    wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//*[contains(text(), 'OLM-3')]")));
+        //    Thread.Sleep(3000);
+        //    Actions action = new Actions(webDriver);
 
 
-                            Thread.Sleep(1000);
+        //    IList<IWebElement> AllTestsIds = webDriver.FindElements(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[@*]/div[2]/div/span/test-case-label/span/a"));
+        //    int[] TestIDsToBeSetToBlocked = {3, 6, 24, 31, 39, 57, 83, 84, 114, 115, 116, 123, 147, 498};
 
-                            currentTestIDtoBeSetToBlocked = "";
+        //    void blockedSetter(int[] TestIDsToBeSetToBlocked, IList<IWebElement> AllTestsIds)
+        //    {
+        //        int index = 0;
+        //        while (index < TestIDsToBeSetToBlocked.Length)
+        //        {
+        //            String currentTestIDtoBeSetToBlocked = String.Concat("OLM-", Convert.ToString(TestIDsToBeSetToBlocked[index]));
 
-                            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
+        //            foreach (var item in AllTestsIds)
+        //            {
+        //                String itemText = item.Text;
+        //                if (itemText == currentTestIDtoBeSetToBlocked)
+        //                {
+        //                    IWebElement elementToScrollTo9 = webDriver.FindElement(By.LinkText(itemText));
+        //                    jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo9);
 
-                            String expectedtext = String.Concat("OLM-", TestIDsToBeSetToBlocked[index]);
-                            String actualTextInSecondPaneAbove = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[3]/div/test-case-run/div[3]/div[1]/div/h2/test-case-label/span/a")).Text;
+        //                    IWebElement toBeClicked = webDriver.FindElement(By.LinkText(itemText));
+        //                    new Actions(webDriver)
+        //                        .MoveToElement(toBeClicked, 180, 10)
+        //                        .Click()
+        //                        .Perform();
 
-                            if (expectedtext == actualTextInSecondPaneAbove)
-                            {
-                                webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")).Click(); //set to blocked
 
-                                //webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[4]")).Click(); //set to not tested
-                            }
+        //                    Thread.Sleep(1000);
 
-                            Thread.Sleep(1000);
-                            index++;
-                            jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo9);
-                        } 
-                    }    
-                }
-            }
+        //                    currentTestIDtoBeSetToBlocked = "";
 
-            blockedSetter(TestIDsToBeSetToBlocked, AllTestsIds);
+        //                    wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")));
 
-            Thread.Sleep(1000);
+        //                    String expectedtext = String.Concat("OLM-", TestIDsToBeSetToBlocked[index]);
+        //                    String actualTextInSecondPaneAbove = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[3]/div/test-case-run/div[3]/div[1]/div/h2/test-case-label/span/a")).Text;
 
-            int expected = 14;
-            int actual = Convert.ToInt32(webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[1]/div[1]/div/div/test-run-progress-bar/div[2]/span[2]/a/span[2]")).Text.Substring(0,2));
+        //                    if (expectedtext == actualTextInSecondPaneAbove)
+        //                    {
+        //                        webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[2]")).Click(); //set to blocked
 
-            Assert.Equal(expected, actual);
-        }
+        //                        //webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[5]/div/test-result/div[3]/test-result-details/div[1]/statuses-on-test-result/div/div/button[4]")).Click(); //set to not tested
+        //                    }
+
+        //                    Thread.Sleep(1000);
+        //                    index++;
+        //                    jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo9);
+        //                } 
+        //            }    
+        //        }
+        //    }
+
+        //    blockedSetter(TestIDsToBeSetToBlocked, AllTestsIds);
+
+        //    Thread.Sleep(1000);
+
+        //    int expected = 14;
+        //    int actual = Convert.ToInt32(webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[1]/div[1]/div/div/test-run-progress-bar/div[2]/span[2]/a/span[2]")).Text.Substring(0,2));
+
+        //    Assert.Equal(expected, actual);
+        //}
 
 
         internal static int[] putNumbersFrom1to10inRandomOrder() {
@@ -238,7 +242,7 @@ namespace Selenium.NetCore.Test
 
         internal static void assigmentOnFE(List<TestcaseIDline> TestcaseIDlines)
         {
-            webDriver.Navigate().GoToUrl("https://olm.testcaselab.com/projects/OLM/test_run/71096?sort_dir=asc&sort_attr=created_at&test_case_id=1191221");
+            webDriver.Navigate().GoToUrl("https://olm.testcaselab.com/projects/OLM/test_run/72302?sort_dir=desc&sort_attr=created_at&test_case_id=1456881");
             webDriver.Manage().Window.Maximize();
 
             Thread.Sleep(1000);
@@ -293,7 +297,7 @@ namespace Selenium.NetCore.Test
             jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo7);
             Thread.Sleep(3000);
 
-            IWebElement elementToScrollTo8 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[137]/div[2]/div/span/div"));
+            IWebElement elementToScrollTo8 = webDriver.FindElement(By.XPath("/html/body/div[1]/div/test-run-page/div/div[2]/div[1]/div[1]/test-case-run-list/div[4]/div/div/div[123]/div[2]/div/span/div"));
             jse.ExecuteScript("arguments[0].scrollIntoView(true)", elementToScrollTo8);
             Thread.Sleep(3000);
 
@@ -473,7 +477,7 @@ namespace Selenium.NetCore.Test
             }
             else if (lang == "GER")
             {
-                webDriver.FindElement(By.XPath("/html/body/div/header/div[2]/form/button[3]")).Click();
+                webDriver.FindElement(By.XPath("/html/body/div/header/div[2]/form/button[4]")).Click();
 
                 webDriver.FindElement(By.Name("login_email")).SendKeys(login_email);
                 webDriver.FindElement(By.Name("login_password")).SendKeys(login_password);
@@ -550,6 +554,9 @@ namespace Selenium.NetCore.Test
         [InlineData("gluckgabor@gmail.com", "WnrsZBPXMhFw4z6s")]
         public void OLM_5_IE_kompatibilitas(String login_email, String login_password)
         {
+
+            //C:\Program Files (x86)\Microsoft\Edge\Application\114.0.1823.41 under this folder the BHO I renamed and finally now I again not get redirected to Edge.
+
             new DriverManager().SetUpDriver(new InternetExplorerConfig());
             IWebDriver IEdriver = new InternetExplorerDriver();
 
