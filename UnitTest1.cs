@@ -68,7 +68,7 @@ namespace Selenium.NetCore.Test
             this.output = output;
             var directory = Directory.GetCurrentDirectory();
             //var pathDrivers = directory + "";
-            var pathDrivers = "C:/Users/gluck/.nuget/packages/selenium.webdriver.chromedriver/113.0.5672.6300/driver/win32";
+            var pathDrivers = "C:/Users/gluck/.nuget/packages/selenium.webdriver.chromedriver/114.0.5735.1600/driver/win32";
 
             //"C:/Users/gluck/OneDrive/Documents/1 Structured Random Kft/elszámolás/2 OLM/selenium-cshap-sample-master/drivers
             webDriver = new ChromeDriver(pathDrivers);
@@ -559,7 +559,7 @@ namespace Selenium.NetCore.Test
             String email = "gluckgabor+" + Convert.ToString(RandomDigits(10)) + "@gmail.com";
             output.WriteLine(email);
 
-            TextWriter tw = new StreamWriter("C:/Users/gluck/OneDrive/Documents/2 Prealfa Szoftver Bt/elszámolás/OL Munkaidő Kft/OLM_Registered_Company.txt");
+            TextWriter tw = new StreamWriter("C:/Users/gluck/OLM_Registered_Company.txt");
 
             // write lines of text to the file
             tw.WriteLine(company_name);
