@@ -18,59 +18,19 @@ using System.Text;
 using OpenQA.Selenium.Edge;
 
 namespace Selenium.NetCore.Test
-{
-    //public class IETests : IDisposable
-    //{
-    //    public static IWebDriver webDriver;
-    //    public static IWebDriver IEwebDriver;
-
-    //    private readonly ITestOutputHelper output;
-    //    //private readonly ITestOutputHelper IEoutput;
-
-    //    //public static  IEdriver;
-
-    //    //public IETests(ITestOutputHelper output)
-    //    //{
-    //    //   // var driverService = InternetExplorerDriverService.CreateDefaultService(@"C:\Users\gluck\.nuget\packages\webdriver.iedriverserver.win64\3.150.1");
-
-    //    //    var options = new InternetExplorerOptions();
-
-    //    //    // Set the desired capabilities
-    //    //    options.IgnoreZoomLevel = true;
-    //    //    options.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
-    //    //    options.ForceCreateProcessApi = true;
-            
-    //    //    // Create an instance of InternetExplorerDriver            
-    //    //    IEwebDriver = new InternetExplorerDriver(driverService, options);
-
-    //    //}
-
-    //    //public void Dispose()
-    //    //{
-    //    //    IEwebDriver.Dispose();
-    //    //}
-
-
-    //}
+{    
         public class ChromeTests
     {
         public static IWebDriver webDriver;
-        //public static IWebDriver IEdriver;
 
         private readonly ITestOutputHelper output;
-        //private readonly ITestOutputHelper IEoutput;
-
-        //public static  IEdriver;
-
         
         public ChromeTests(ITestOutputHelper output)
         {
             this.output = output;
             var directory = Directory.GetCurrentDirectory();
-            //var pathDrivers = directory + "";
             var pathDrivers = "C:/Users/gluck/.nuget/packages/selenium.webdriver.chromedriver/114.0.5735.1600/driver/win32";
-
-            //"C:/Users/gluck/OneDrive/Documents/1 Structured Random Kft/elszámolás/2 OLM/selenium-cshap-sample-master/drivers
+                        
             webDriver = new ChromeDriver(pathDrivers);
 
             var driverService = InternetExplorerDriverService.CreateDefaultService(@"C:\Users\gluck\.nuget\packages\webdriver.iedriverserver.win64\3.150.1");
@@ -81,16 +41,11 @@ namespace Selenium.NetCore.Test
             options.IgnoreZoomLevel = true;
             options.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
             options.ForceCreateProcessApi = true;
-            // Create an instance of InternetExplorerDriver            
-            //IEdriver = new InternetExplorerDriver(driverService, options);
-            //new DriverManager().SetUpDriver(new ChromeConfig());
-            //webDriver = new ChromeDriver();
-
+            
             Debug.Print("dirGG" + directory);
         }
 
         
-
         class MultiComparable : IComparable
         {
             private int Value { get; }
@@ -113,6 +68,113 @@ namespace Selenium.NetCore.Test
 
                 throw new InvalidOperationException();
             }
+        }
+
+        [Fact]
+        public void Testcase1_Calkoo_User_Interface_check()
+        {
+            webDriver.Navigate().GoToUrl("https://www.calkoo.com/en/vat-calculator");
+            webDriver.Manage().Window.Maximize();
+            Thread.Sleep(1000);
+
+            webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+
+            //click welcome pop-up
+            webDriver.FindElement(By.XPath("/html/body/div[5]/div[2]/div[1]/div[2]/div[2]/button[1]/p")).Click();
+
+            //click cookie consent
+            webDriver.FindElement(By.XPath("/html/body/div[1]/div/a")).Click();
+
+
+            IWebElement mainTitle = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/h2"));
+
+            String expected = "Initial Data";
+            String actual = Convert.ToString(mainTitle.Text);
+            Assert.Equal(expected, actual);
+
+
+            IWebElement label1 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[2]/div[1]"));
+
+            String expected1 = "Country";
+            String actual1 = Convert.ToString(label1.Text);
+            Assert.Equal(expected1, actual1);
+
+            IWebElement dropdown = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[2]/div[2]/select"));
+            Assert.True(dropdown.Displayed);
+            
+
+            IWebElement label2 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[4]/div[1]"));
+
+            String expected2 = "VAT rate";
+            String actual2 = Convert.ToString(label2.Text);
+            Assert.Equal(expected2, actual2);
+
+
+            IWebElement checkbox1 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[4]/div[2]/label[1]"));
+            Assert.True(checkbox1.Displayed);
+
+            IWebElement checkbox2 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[4]/div[2]/label[2]"));
+            Assert.True(checkbox2.Displayed);
+
+            IWebElement label3 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[6]/div[1]/label"));
+            String expected3 = "Price without VAT";
+            String actual3 = Convert.ToString(label3.Text);
+            Assert.Equal(expected3, actual3);
+
+            IWebElement checkbox3 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[6]/div[1]/input"));
+            String expected33 = "radio";
+            String actual33 = Convert.ToString(checkbox3.GetAttribute("type"));
+            Assert.Equal(expected33, actual33);
+            
+
+            IWebElement label4 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[7]/div[1]/label"));
+
+            String expected4 = "Value-Added Tax";
+            String actual4 = Convert.ToString(label4.Text);
+            Assert.Equal(expected4, actual4);
+
+            IWebElement checkbox4 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[7]/div[1]/input"));
+            String expected44 = "radio";
+            String actual44 = Convert.ToString(checkbox4.GetAttribute("type"));
+            Assert.Equal(expected44, actual44);
+
+            IWebElement label5 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[8]/div[1]/label"));
+
+            String expected5 = "Price incl. VAT";
+            String actual5 = Convert.ToString(label5.Text);
+            Assert.Equal(expected5, actual5);
+
+            IWebElement checkbox5 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[8]/div[1]/input"));
+            String expected55 = "radio";
+            String actual55 = Convert.ToString(checkbox5.GetAttribute("type"));
+            Assert.Equal(expected55, actual55);
+
+            IWebElement inputbox3 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[6]/div[2]/input[1]"));
+            String expected66 = "text";
+            String actual66 = Convert.ToString(inputbox3.GetAttribute("type"));
+            Assert.Equal(expected66, actual66);
+
+            IWebElement inputbox4 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[7]/div[2]/input"));
+            String expected77 = "text";
+            String actual77 = Convert.ToString(inputbox4.GetAttribute("type"));
+            Assert.Equal(expected77, actual77);
+
+            IWebElement inputbox5 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[8]/div[2]/input[1]"));
+            String expected88 = "text";
+            String actual88 = Convert.ToString(inputbox5.GetAttribute("type"));
+            Assert.Equal(expected88, actual88);
+
+
+
+
+
+            IWebElement button1 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[10]/div[3]/input"));
+
+            String expected6 = "Reset";
+            String actual6 = Convert.ToString(button1.GetAttribute("value"));
+            Assert.Equal(expected6, actual6);
+
+            Assert.True(button1.Displayed);
         }
 
 
@@ -142,20 +204,14 @@ namespace Selenium.NetCore.Test
             
             //Select VAT rate
             webDriver.FindElement(By.XPath(xPathVATRate)).Click();
-
-            //Select checkbox next to desired input
-            //IWebElement element = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[4]/div[1]"));
-            //js.ExecuteScript("arguments[0].scrollIntoView(true);", checkBox);            
+            
+            //Select checkbox next to inputField
             webDriver.FindElement(By.XPath(checkBox)).Click();
 
             //Select inputField and enter inputData
             webDriver.FindElement(By.XPath(inputField)).SendKeys(Convert.ToString(inputData));
 
             String expected = expectedResult1.ToString("0.00");
-            
-            
-
-            //String actual = (string)js.ExecuteScript("return document.getElementById("VATpct1"));
             String actual = Convert.ToString(js.ExecuteScript("return document.getElementById(\"VATsum\").value;"));
             Assert.Equal(expected, actual);
 
