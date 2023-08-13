@@ -88,93 +88,93 @@ namespace Selenium.NetCore.Test
 
             IWebElement mainTitle = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/h2"));
 
-            String expected = "Initial Data";
-            String actual = Convert.ToString(mainTitle.Text);
-            Assert.Equal(expected, actual);
+            String expectedMainTitle = "Initial Data";
+            String actualMainTitle = Convert.ToString(mainTitle.Text);
+            Assert.Equal(expectedMainTitle, actualMainTitle);
 
 
-            IWebElement label1 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[2]/div[1]"));
+            IWebElement labelCountry = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[2]/div[1]"));
 
-            String expected1 = "Country";
-            String actual1 = Convert.ToString(label1.Text);
-            Assert.Equal(expected1, actual1);
+            String expectedCountry = "Country";
+            String actualCountry = Convert.ToString(labelCountry.Text);
+            Assert.Equal(expectedCountry, actualCountry);
 
-            IWebElement dropdown = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[2]/div[2]/select"));
-            Assert.True(dropdown.Displayed);
+            IWebElement dropdownCountry = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[2]/div[2]/select"));
+            Assert.True(dropdownCountry.Displayed);
             
 
-            IWebElement label2 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[4]/div[1]"));
+            IWebElement labelVATRate = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[4]/div[1]"));
 
-            String expected2 = "VAT rate";
-            String actual2 = Convert.ToString(label2.Text);
-            Assert.Equal(expected2, actual2);
+            String expectedVATRate = "VAT rate";
+            String actualVATRate = Convert.ToString(labelVATRate.Text);
+            Assert.Equal(expectedVATRate, actualVATRate);
 
 
-            IWebElement checkbox1 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[4]/div[2]/label[1]"));
-            Assert.True(checkbox1.Displayed);
+            IWebElement checkboxVATRate1 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[4]/div[2]/label[1]"));
+            Assert.True(checkboxVATRate1.Displayed);
 
-            IWebElement checkbox2 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[4]/div[2]/label[2]"));
-            Assert.True(checkbox2.Displayed);
+            IWebElement checkboxVATRate2 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[4]/div[2]/label[2]"));
+            Assert.True(checkboxVATRate2.Displayed);
 
-            IWebElement label3 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[6]/div[1]/label"));
-            String expected3 = "Price without VAT";
-            String actual3 = Convert.ToString(label3.Text);
-            Assert.Equal(expected3, actual3);
+            IWebElement labelPriceWithoutVAT = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[6]/div[1]/label"));
+            String expectedPriceWithoutVAT = "Price without VAT";
+            String actualPriceWithoutVAT = Convert.ToString(labelPriceWithoutVAT.Text);
+            Assert.Equal(expectedPriceWithoutVAT, actualPriceWithoutVAT);
 
-            IWebElement checkbox3 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[6]/div[1]/input"));
-            String expected33 = "radio";
-            String actual33 = Convert.ToString(checkbox3.GetAttribute("type"));
-            Assert.Equal(expected33, actual33);
+            IWebElement checkboxPriceWithoutVAT = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[6]/div[1]/input"));
+            String expectedPriceWithoutVATCheckbox = "radio";
+            String actualPriceWithoutVATCheckbox = Convert.ToString(checkboxPriceWithoutVAT.GetAttribute("type"));
+            Assert.Equal(expectedPriceWithoutVAT, actualPriceWithoutVAT);
             
 
-            IWebElement label4 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[7]/div[1]/label"));
+            IWebElement labelValueAddedTax = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[7]/div[1]/label"));
 
-            String expected4 = "Value-Added Tax";
-            String actual4 = Convert.ToString(label4.Text);
-            Assert.Equal(expected4, actual4);
+            String expectedValueAddedTax = "Value-Added Tax";
+            String actualValueAddedTax = Convert.ToString(labelValueAddedTax.Text);
+            Assert.Equal(expectedValueAddedTax, actualValueAddedTax);
 
-            IWebElement checkbox4 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[7]/div[1]/input"));
-            String expected44 = "radio";
-            String actual44 = Convert.ToString(checkbox4.GetAttribute("type"));
-            Assert.Equal(expected44, actual44);
+            IWebElement checkboxValueAddedTax = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[7]/div[1]/input"));
+            String expectedValueAddedTaxCheckbox = "radio";
+            String actualValueAddedTaxCheckbox = Convert.ToString(checkboxValueAddedTax.GetAttribute("type"));
+            Assert.Equal(expectedValueAddedTaxCheckbox, actualValueAddedTaxCheckbox);
 
-            IWebElement label5 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[8]/div[1]/label"));
+            IWebElement labelPriceInclVAT = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[8]/div[1]/label"));
 
-            String expected5 = "Price incl. VAT";
-            String actual5 = Convert.ToString(label5.Text);
-            Assert.Equal(expected5, actual5);
+            String expectedPriceInclVAT = "Price incl. VAT";
+            String actualPriceInclVAT = Convert.ToString(labelPriceInclVAT.Text);
+            Assert.Equal(expectedPriceInclVAT, actualPriceInclVAT);
 
-            IWebElement checkbox5 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[8]/div[1]/input"));
-            String expected55 = "radio";
-            String actual55 = Convert.ToString(checkbox5.GetAttribute("type"));
-            Assert.Equal(expected55, actual55);
+            IWebElement checkboxPriceInclVAT = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[8]/div[1]/input"));
+            String expectedPriceInclVATCheckbox = "radio";
+            String actualPriceInclVATCheckbox = Convert.ToString(checkboxPriceInclVAT.GetAttribute("type"));
+            Assert.Equal(expectedPriceInclVATCheckbox, actualPriceInclVATCheckbox);
 
-            IWebElement inputbox3 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[6]/div[2]/input[1]"));
-            String expected66 = "text";
-            String actual66 = Convert.ToString(inputbox3.GetAttribute("type"));
-            Assert.Equal(expected66, actual66);
+            IWebElement inputboxPriceWithoutVAT = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[6]/div[2]/input[1]"));
+            String expectedPriceWithoutVATInputbox = "text";
+            String actualPriceWithoutVATInputbox = Convert.ToString(inputboxPriceWithoutVAT.GetAttribute("type"));
+            Assert.Equal(expectedPriceWithoutVAT, actualPriceWithoutVAT);
 
-            IWebElement inputbox4 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[7]/div[2]/input"));
-            String expected77 = "text";
-            String actual77 = Convert.ToString(inputbox4.GetAttribute("type"));
-            Assert.Equal(expected77, actual77);
+            IWebElement inputboxVAT = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[7]/div[2]/input"));
+            String expectedVATInputbox = "text";
+            String actualVATInputbox = Convert.ToString(inputboxVAT.GetAttribute("type"));
+            Assert.Equal(expectedVATInputbox, actualVATInputbox);
 
-            IWebElement inputbox5 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[8]/div[2]/input[1]"));
-            String expected88 = "text";
-            String actual88 = Convert.ToString(inputbox5.GetAttribute("type"));
-            Assert.Equal(expected88, actual88);
-
-
+            IWebElement inputboxPriceInclVAT = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[8]/div[2]/input[1]"));
+            String expectedPriceInclVATInputbox = "text";
+            String actualPriceInclVATInputbox = Convert.ToString(inputboxPriceInclVAT.GetAttribute("type"));
+            Assert.Equal(expectedPriceInclVATInputbox, actualPriceInclVATInputbox);
 
 
 
-            IWebElement button1 = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[10]/div[3]/input"));
 
-            String expected6 = "Reset";
-            String actual6 = Convert.ToString(button1.GetAttribute("value"));
-            Assert.Equal(expected6, actual6);
 
-            Assert.True(button1.Displayed);
+            IWebElement buttonReset = webDriver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[10]/div[3]/input"));
+
+            String expectedButtonReset = "Reset";
+            String actualButtonReset = Convert.ToString(buttonReset.GetAttribute("value"));
+            Assert.Equal(expectedButtonReset, actualButtonReset);
+
+            Assert.True(buttonReset.Displayed);
         }
 
 
@@ -183,7 +183,7 @@ namespace Selenium.NetCore.Test
         [InlineData("Switzerland", "/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[4]/div[2]/label[2]", "/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[6]/div[1]/label", "/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[6]/div[2]/input[1]", 100, 3.70, 103.70, "× 0.037000", "× 0.035680")]
         [InlineData("Switzerland", "/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[4]/div[2]/label[3]", "/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[6]/div[1]/label", "/html/body/div[4]/div/div[3]/div/div[1]/div/div[1]/form/div[6]/div[2]/input[1]", 100, 7.70, 107.70, "× 0.077000", "× 0.071495")]        
 
-        public void Testcase2_Calkoo_Switzerland_PriceWithoutVAT(String Country, String xPathVATRate, String checkBox, String inputField, double inputData, double expectedResult1, double expectedResult2Gross, string multiplier1Net, string multiplier2Gross)
+        public void Testcase2_Calkoo_Switzerland_PriceWithoutVAT(String Country, String xPathVATRate, String checkBoxInputvalue, String inputField, double inputData, double expectedResult1, double expectedResult2Gross, string multiplier1Net, string multiplier2Gross)
         {
             IJavaScriptExecutor js = (IJavaScriptExecutor)webDriver;
 
@@ -206,7 +206,7 @@ namespace Selenium.NetCore.Test
             webDriver.FindElement(By.XPath(xPathVATRate)).Click();
             
             //Select checkbox next to inputField
-            webDriver.FindElement(By.XPath(checkBox)).Click();
+            webDriver.FindElement(By.XPath(checkBoxInputvalue)).Click();
 
             //Select inputField and enter inputData
             webDriver.FindElement(By.XPath(inputField)).SendKeys(Convert.ToString(inputData));
