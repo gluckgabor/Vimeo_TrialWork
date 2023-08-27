@@ -419,7 +419,6 @@ namespace Selenium.NetCore.Test
             Assert.True(desktopWebDriver.FindElement(By.XPath("/html/body/div[1]/div[2]/div/div/div[1]/div/div[1]/div/div[2]/p")).Text == "10.4K results for Duna");
 
         desktopWebDriver.Close();
-        mobileWebDriver.Close();
         }
         
         //Check the results on mobile view as well
