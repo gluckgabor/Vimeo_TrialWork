@@ -142,6 +142,9 @@ namespace Selenium.NetCore.Test
             desktopWebDriver.FindElement(By.XPath("/html/body/div[1]/div[1]/div[4]/div/div[1]/form/div[1]/div[1]/div/div[1]/input")).SendKeys(searchTerm);
 
             desktopWebDriver.FindElement(By.XPath("/html/body/div[1]/div[1]/div[4]/div/div[1]/form/div[1]/div[1]/div/div[1]/input")).Submit();
+
+            desktopWebDriver.Close();
+            mobileWebDriver.Close();
         }
 
 
@@ -191,6 +194,9 @@ namespace Selenium.NetCore.Test
             int numberOfPages = desktopWebDriver.FindElements(By.XPath("/html/body/div[1]/div[2]/div/div/div[1]/div/div[3]/div/ol/li[*]")).Count;
             Debug.Print(Convert.ToString(numberOfPages));
             Assert.True(numberOfPages > 1);
+
+            desktopWebDriver.Close();
+            mobileWebDriver.Close();
         }
 
         
@@ -203,6 +209,9 @@ namespace Selenium.NetCore.Test
             string textofFirstButton = desktopWebDriver.FindElements(By.XPath("/html/body/div[1]/div[2]/div/div/div[1]/div/div[3]/div/ol/li[*]")).GetItemByIndex(0).Text;
 
             Assert.True(textofFirstButton != "Prev");
+
+            desktopWebDriver.Close();
+            mobileWebDriver.Close();
         }
 
 
@@ -228,6 +237,9 @@ namespace Selenium.NetCore.Test
 
             Debug.Print(Convert.ToString(textofLastButton));
             Assert.True(textofLastButton != "Last");
+
+            desktopWebDriver.Close();
+            mobileWebDriver.Close();
         }
 
 
@@ -249,6 +261,9 @@ namespace Selenium.NetCore.Test
 
             Debug.Print(Convert.ToString(textofLastButton));
             Assert.True(textofLastButton == "Next");
+
+            desktopWebDriver.Close();
+            mobileWebDriver.Close();
         }
 
 
@@ -302,6 +317,9 @@ namespace Selenium.NetCore.Test
                 var url = link.GetAttribute("href");
                 IsLinkWorking(url);
             }
+
+            desktopWebDriver.Close();
+            mobileWebDriver.Close();
         }
 
 
@@ -331,6 +349,8 @@ namespace Selenium.NetCore.Test
 
             Assert.True(numberOfLinksTotal == Convert.ToInt32(totalResultCountText.Replace(",", "")));
 
+            desktopWebDriver.Close();
+            mobileWebDriver.Close();
         }
 
 
@@ -340,7 +360,10 @@ namespace Selenium.NetCore.Test
 
         testSetupLoggedInOnDesktop("Duna");
             
-        Assert.True(desktopWebDriver.FindElement(By.XPath("/html/body/div[1]/div[2]/div/div/div[2]/nav/div[1]/ul/li[1]/label/div/a")).Text == "Videos (10.4K)");   
+        Assert.True(desktopWebDriver.FindElement(By.XPath("/html/body/div[1]/div[2]/div/div/div[2]/nav/div[1]/ul/li[1]/label/div/a")).Text == "Videos (10.4K)");
+
+        desktopWebDriver.Close();
+        mobileWebDriver.Close();
         }
 
         [Fact]
@@ -349,6 +372,9 @@ namespace Selenium.NetCore.Test
             testSetupLoggedInOnDesktop("Duna");
 
             Assert.True(desktopWebDriver.FindElement(By.XPath("/html/body/div[1]/div[2]/div/div/div[2]/nav/div[1]/ul/li[2]/label/div/a")).Text == "On Demand (24)");
+
+        desktopWebDriver.Close();
+        mobileWebDriver.Close();
         }
 
         [Fact]
@@ -357,6 +383,9 @@ namespace Selenium.NetCore.Test
             testSetupLoggedInOnDesktop("Duna");
 
             Assert.True(desktopWebDriver.FindElement(By.XPath("/html/body/div[1]/div[2]/div/div/div[2]/nav/div[1]/ul/li[3]/label/div/a")).Text == "People (636)");
+
+        desktopWebDriver.Close();
+        mobileWebDriver.Close();
         }
 
         [Fact]
@@ -365,6 +394,9 @@ namespace Selenium.NetCore.Test
             testSetupLoggedInOnDesktop("Duna");
 
             Assert.True(desktopWebDriver.FindElement(By.XPath("/html/body/div[1]/div[2]/div/div/div[2]/nav/div[1]/ul/li[4]/label/div/a")).Text == "Channels (29)");
+
+        desktopWebDriver.Close();
+        mobileWebDriver.Close();
         }
 
         [Fact]
@@ -373,6 +405,9 @@ namespace Selenium.NetCore.Test
             testSetupLoggedInOnDesktop("Duna");
 
             Assert.True(desktopWebDriver.FindElement(By.XPath("/html/body/div[1]/div[2]/div/div/div[2]/nav/div[1]/ul/li[5]/label/div/a")).Text == "Groups (5)");
+
+        desktopWebDriver.Close();
+        mobileWebDriver.Close();
         }
 
 
@@ -382,6 +417,9 @@ namespace Selenium.NetCore.Test
 
             testSetupAsGuest("Duna");
             Assert.True(desktopWebDriver.FindElement(By.XPath("/html/body/div[1]/div[2]/div/div/div[1]/div/div[1]/div/div[2]/p")).Text == "10.4K results for Duna");
+
+        desktopWebDriver.Close();
+        mobileWebDriver.Close();
         }
         
         //Check the results on mobile view as well
@@ -390,6 +428,8 @@ namespace Selenium.NetCore.Test
 
         testSetupLoggedInOnMobile("Duna");
         Assert.True(mobileWebDriver.FindElement(By.XPath("/html/body/div[1]/div[2]/div/div/div[1]/div/div[1]/div/div[2]/p")).Text == "10.4K results for Duna");
+
+        mobileWebDriver.Close();
         }
     }
 }
